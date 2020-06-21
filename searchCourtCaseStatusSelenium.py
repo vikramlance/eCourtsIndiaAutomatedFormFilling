@@ -20,7 +20,6 @@ import http.cookiejar as cookielib
 options = Options()
 ua = UserAgent()
 userAgent = ua.random
-print(userAgent)
 options.add_argument(f'user-agent={userAgent}')
 
 config = configparser.ConfigParser()
@@ -34,11 +33,27 @@ driver.get(website_url)
 court_establishment = driver.find_element_by_id("radCourtEst")
 court_establishment.click()
 
+all_options_court_code = driver.find_element_by_id("court_code")
+options_court_code = all_options_court_code.find_elements_by_tag_name("option")
+for each_option in options_court_code:    
+    if each_option.get_attribute("text") == config[input_config]['court_establishment']:
+        court_code = each_option.get_attribute("value")
+        break
+
+
 select_court_code = Select(driver.find_element_by_id('court_code'))
-select_court_code.select_by_value(config[input_config]['court_code'])
+select_court_code.select_by_value(court_code)
+
+
+all_options_case_type = driver.find_element_by_id("case_type")
+options_case_type = all_options_case_type.find_elements_by_tag_name("option")
+for each_option in options_case_type:
+    if each_option.get_attribute("text") == config[input_config]['case_type_text']:
+        case_type = each_option.get_attribute("value")
+        break
 
 select_case_type = Select(driver.find_element_by_id('case_type'))
-select_case_type.select_by_value(config[input_config]['case_type'])
+select_case_type.select_by_value(case_type)
 
 search_case_no = driver.find_element_by_id("search_case_no")
 search_case_no.send_keys(config[input_config]['search_case_no'])
@@ -132,7 +147,7 @@ driver.find_element_by_xpath('//*[@id="showList1"]/tr/td[4]/a').click()
 
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-screenshot_name = 'screenshot_' + config[input_config]['case_district'] + '.png'
+screenshot_name = 'screenshot_' + config[input_config]['court_establishment'] + '_' + config[input_config]['search_case_no'] + '.png'
 driver.save_screenshot(screenshot_name)
 
 # driver.Quit()

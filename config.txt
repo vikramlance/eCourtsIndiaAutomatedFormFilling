@@ -1,0 +1,13 @@
+[config1]
+url= https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/case_no.php?state=D&state_cd=1&dist_cd=25
+court_establishment = Civil Court Senior Division ,Pune
+case_type_text = Civil M.A. - Civil Misc. Application
+search_case_no = 100
+rgyear = 2015
+
+[config2]
+url= https://services.ecourts.gov.in/ecourtindia_v4_bilingual/cases/case_no.php?state=D&state_cd=1&dist_cd=25
+court_establishment = Civil Court Senior Division ,Pune
+case_type_text = Civil M.A. - Civil Misc. Application
+search_case_no = 101
+rgyear = 2015
