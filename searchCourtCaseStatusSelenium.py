@@ -124,7 +124,7 @@ search_case_no.send_keys(config[input_config]['rgyear'])
 #     return text
 
 # captcha_text = solve_captcha('captcha.png')
-# print("aaaaaa 3")
+# print("captcha_text")
 # print(captcha_text)
 
 # search_captha = driver.find_element_by_id("captcha")
